@@ -25,6 +25,7 @@ pipeline {
         stage ('Two') {
             steps {
                 sh 'echo world 2'
+                sh 'echo world 3'
             }
         }
     }
