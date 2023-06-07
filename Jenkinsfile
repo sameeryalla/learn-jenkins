@@ -17,4 +17,9 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            sh 'echo post run with always'
+        }
+    }
 }
