@@ -17,14 +17,6 @@ pipeline {
         sample_url="www.example.com"
     }
     stages {
-        input {
-           message "Should we continue?"
-           ok "Yes, we should."
-           submitter "alice,bob"
-           parameters {
-                            string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-           }
-        }
         stage ('One') {
             input {
                 message "Do you approve?"
