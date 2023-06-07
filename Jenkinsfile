@@ -4,14 +4,18 @@ pipeline {
             label 'workstation'
         }
     }
+    environment {
+        sample_url="www.example.com"
+    }
     stages {
-        stage ('one') {
+        stage ('One') {
             steps {
                 sh 'echo world 1'
+                sh 'echo ${sample_url}'
             }
 
         }
-        stage ('two') {
+        stage ('Two') {
             steps {
                 sh 'echo world 2'
             }
