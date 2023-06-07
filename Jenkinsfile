@@ -37,7 +37,13 @@ pipeline {
 
         }
         stage ('Two') {
+            when {
+                expression {
+                    GIT_BRANCH == 'origin/test'
+                }
+            }
             steps {
+                sh 'env'
                 sh 'echo world 2'
                 sh 'echo world 3'
             }
