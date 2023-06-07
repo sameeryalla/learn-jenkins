@@ -4,6 +4,12 @@ pipeline {
             label 'workstation'
         }
     }
+    options {
+     ansiColor('xterm')
+    }
+    parameters {
+        string(name:'PERSON', defaultValue:'Mr Jenkins', description: 'Who should I say hello')
+    }
     environment {
         sample_url="www.example.com"
     }
