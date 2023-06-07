@@ -56,7 +56,6 @@ pipeline {
                 steps{
                     sh 'echo one'
                 }
-
             }
             stage('Two') {
                 steps{
@@ -67,7 +66,6 @@ pipeline {
                 steps {
                     sh 'echo three'
                 }
-
             }
         }
     }
