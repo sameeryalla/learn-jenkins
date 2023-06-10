@@ -18,13 +18,13 @@ pipeline {
         stage ('stage1') {
             steps{
                 sh 'echo hello world1'
-                sh 'echo ${PERSON}'
+                sh 'echo person - ${PERSON}'
             }
         }
         stage ('stage2') {
             steps {
                 sh 'echo hello world2'
-                sh 'echo ${$sample_url}'
+                sh 'echo ${sample_url}'
             }
         }
     }
