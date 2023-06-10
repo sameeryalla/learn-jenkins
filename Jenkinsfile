@@ -44,34 +44,26 @@ pipeline {
             }
            }
            parallel {
-                stage ('stage1') {
-                    input {
-                        message "Do you approve?"
-                        ok "Yes"
-                    }
+                stage ('stage3') {
                     steps{
-                        sh 'echo hello world1'
+                        sh 'echo hello world3'
                         sh 'echo person - ${PERSON}'
                     }
                 }
-                stage ('stage2') {
+                stage ('stage4') {
                     when{
                         expression {
                             GIT_BRANCH == 'origin/master'
                         }
                     }
                     steps {
-                        sh 'echo hello world2'
+                        sh 'echo hello world4'
                         sh 'echo ${sample_url}'
                     }
                 }
-                stage ('stage3') {
-                    input {
-                        message "Do you approve?"
-                        ok "Yes"
-                    }
+                stage ('stage5') {
                     steps{
-                        sh 'echo hello world3'
+                        sh 'echo hello world5'
                         sh 'echo person - ${PERSON}'
                     }
                 }
