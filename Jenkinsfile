@@ -37,6 +37,46 @@ pipeline {
                 sh 'echo ${sample_url}'
             }
         }
+        stage ('Parallel blocks'){
+           when{
+            expression {
+                GIT_BRANCH == 'origin/main'
+            }
+           }
+           parallel {
+                stage ('stage1') {
+                    input {
+                        message "Do you approve?"
+                        ok "Yes"
+                    }
+                    steps{
+                        sh 'echo hello world1'
+                        sh 'echo person - ${PERSON}'
+                    }
+                }
+                stage ('stage2') {
+                    when{
+                        expression {
+                            GIT_BRANCH == 'origin/master'
+                        }
+                    }
+                    steps {
+                        sh 'echo hello world2'
+                        sh 'echo ${sample_url}'
+                    }
+                }
+                stage ('stage3') {
+                    input {
+                        message "Do you approve?"
+                        ok "Yes"
+                    }
+                    steps{
+                        sh 'echo hello world3'
+                        sh 'echo person - ${PERSON}'
+                    }
+                }
+           }
+        }
     }
     post {
         always {
