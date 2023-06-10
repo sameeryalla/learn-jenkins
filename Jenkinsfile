@@ -17,6 +17,10 @@ pipeline {
     }
     stages {
         stage ('stage1') {
+            input {
+                message "Do you approve?"
+                ok "Yes"
+            }
             steps{
                 sh 'echo hello world1'
                 sh 'echo person - ${PERSON}'
