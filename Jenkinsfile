@@ -23,7 +23,7 @@ pipeline {
             }
             steps{
                 sh 'echo hello world1'
-                sh 'echo person - ${PERSON}'
+                sh 'echo person - ${PERSON1}'
             }
         }
         stage ('stage2') {
