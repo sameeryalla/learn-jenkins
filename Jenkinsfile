@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            label 'workstation'
+        }
+    }
     stages {
         stage ('stage1') {
             steps{
@@ -10,6 +14,12 @@ pipeline {
             steps {
                 sh 'echo hello world2'
             }
+        }
+    }
+    post {
+        always {
+         sh 'echo clean the build'
+         cleanWs()
         }
     }
 }
