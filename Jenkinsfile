@@ -27,6 +27,11 @@ pipeline {
             }
         }
         stage ('stage2') {
+            when{
+                expression {
+                    GIT_BRANCH == 'origin/master'
+                }
+            }
             steps {
                 sh 'echo hello world2'
                 sh 'echo ${sample_url}'
