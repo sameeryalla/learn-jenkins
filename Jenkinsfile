@@ -1,73 +1,14 @@
-// pipeline {
-//     agent {
-//         node {
-//             label 'workstation'
-//         }
-//     }
-//     triggers {
-//         pollSCM ('H/2 * * * *')
-//         }
-//     options {
-//         ansiColor('xterm')
-//     }
-//     parameters {
-//         string(name:'PERSON', defaultValue:'Mr Jenkins', description: 'Who should I say hello')
-//     }
-//     environment {
-//         sample_url="www.example.com"
-//     }
-//     stages {
-//         stage ('One') {
-//             input {
-//                 message "Do you approve?"
-//                 ok "Yes"
-//             }
-//             steps {
-//                 sh 'echo world 1'
-//                 sh 'echo ${sample_url}'
-//             }
-//
-//         }
-//         stage ('Two') {
-//             when {
-//                 expression {
-//                     GIT_BRANCH == 'origin/test'
-//                 }
-//             }
-//             steps {
-//                 sh 'env'
-//                 sh 'echo world 2'
-//                 sh 'echo world 3'
-//             }
-//         }
-//     }
-//     post {
-//         always {
-//             sh 'echo post run with always block'
-//         }
-//     }
-// }
-
 pipeline {
     agent any
     stages {
-        stage('parallel'){
-            parallel {
-                        stage('One') {
-                            steps{
-                                sh 'echo one'
-                            }
-                        }
-                        stage('Two') {
-                            steps{
-                                sh 'echo two'
-                            }
-                        }
-                        stage('Three') {
-                            steps {
-                                sh 'echo three'
-                            }
-                        }
+        stage ('stage1'){
+            steps{
+                sh 'hello world1'
+            }
+        }
+        stage ('stage2'){
+            steps{
+                sh 'hello world2'
             }
         }
 
