@@ -16,6 +16,11 @@ pipeline {
         sample_url = 'www.example.com'
     }
     stages {
+        when {
+            expression {
+                GIT_BRANCH == 'origin/test'
+            }
+        }
         stage ('stage1') {
             steps{
                 sh 'echo hello world1'
