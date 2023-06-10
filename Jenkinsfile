@@ -16,23 +16,24 @@ pipeline {
         sample_url = 'www.example.com'
     }
     stages {
+        stage ('stage1') {
+                    steps{
+                        sh 'echo hello world1'
+                        sh 'echo person - ${PERSON}'
+                    }
+                }
         when {
             expression {
                 GIT_BRANCH == 'origin/test'
             }
+            stage ('stage2') {
+                        steps {
+                            sh 'echo hello world2'
+                            sh 'echo ${sample_url}'
+                        }
+                    }
         }
-        stage ('stage1') {
-            steps{
-                sh 'echo hello world1'
-                sh 'echo person - ${PERSON}'
-            }
-        }
-        stage ('stage2') {
-            steps {
-                sh 'echo hello world2'
-                sh 'echo ${sample_url}'
-            }
-        }
+
     }
     post {
         always {
